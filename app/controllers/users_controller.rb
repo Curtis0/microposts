@@ -22,7 +22,7 @@ before_action :set_before, only: [ :show, :edit, :update ]
   end
   
   def update
-    if @user.save
+    if @user.update(user_params)
       flash[:success] = "You're account has successfully been updated!"
       redirect_to @user
     else
