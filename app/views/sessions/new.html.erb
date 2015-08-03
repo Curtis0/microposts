@@ -1,18 +1,18 @@
 <h1>Log in</h1>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <%= form_for(:session, url: login_path) do |f| %> <!-- The ":sessions" in the form gives :email and :password to :session. IOW it puts sessions[email], etc. We're "making" a session, not a user so the form goes to session.  -->
+        <%= form_for(:session, url: login_path) do |f| %> <!-- The ":session" in the form gives :email and :password to :session. IOW it puts sessions[email], etc. We're "making" a session, not a user so the form goes to session.  -->
         
             <%= f.label :email %>
             <%= f.email_field :email, class: "form_control" %>
         
             <%= f.label :password %>
             <%= f.password_field :password, class: "form_control" %>
-            
+    <!-- their page shows a boolean box with "Remember me on this computer" by it above the submit button. However it is not in the code at least so far as I have seen. I have typed it all in on my own so perhaps I didn't see it. Check back again later to see how they made it. -->
             <%= f.submit "Log in", class: "btn btn-primary" %>
         
         <% end %>
-<!-- their page shows a boolean box with "Remember me on this computer" by it above the submit button. However it is not in the code at least so far as I have seen. I have typed it all in on my own so perhaps I didn't see it. Check back again later to see how they made it. -->
-        <p>New user? <%= link_to "Sign up Here!", signup_path %></p> <!-- Rather than inputting all of the html, it is easier to just use the rails coding. Hence we used it. To tell rails that it is rails coding, and to say we want it to show up on the page, we used the "< %=  % >" tags. -->
+    
+         <p>New user? <%= link_to "Sign up Here!", signup_path %></p> <!-- Rather than inputting all of the html, it is easier to just use the rails coding. Hence we used it. To tell rails that it is rails coding, and to say we want it to show up on the page, we used the "< %=  % >" tags. -->
     </div>
 </div>
