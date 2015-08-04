@@ -1,0 +1,25 @@
+<div class="rows">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for @user do |f| %>
+    
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+      
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    
+      <%= f.label :profile %>
+      <%= f.text_area :profile, class: "form-control" %>
+      
+      <%= f.label :area %>
+      <%= f.text_field :area, class: "form-control" %>
+      
+      <%= f.submit "Make Changes", class: "btn btn-primary" %>
+      <%= link_to "Back", user_path %>
+      
+    <% end %>
+    
+  </div>
+</div>    
+  

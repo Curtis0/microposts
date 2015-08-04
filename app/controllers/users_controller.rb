@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :set_before, only: [ :show, :edit, :update ]
   
   def show
     @user = User.find(params[:id])
@@ -19,7 +20,23 @@ class UsersController < ApplicationController
     end
   end
 
-
+  def edit
+  end
+  
+  def update
+    if @user.update(user_params)
+      flash[:success] = "You're account has successfully been updated!"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  
+  def set_before
+    @user = User.find(params[:id])
+  end
+  
+  
   
   private
   
@@ -27,8 +44,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :name,
       :email,
+      :profile,
+      :area,
       :password,
       :password_confirmation
       )
   end
+  
 end
