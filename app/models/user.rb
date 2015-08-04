@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
     has_secure_password
     has_many :microposts
+    has_many :following_relationships,  class_name:   "Relationship",
+                                        foreign_key:  "follower_id",
+                                        dependent:    :destroy
+    has_many :following_users, through: :following_relationships, source: :followed
+    has_many :followed_relationships,   class_name:   "Relationship",
+                                        foreign_key:  "followed_id",
+                                        dependent:    :destroy
+    has_many :followed_users, through: :followed_relationships, source: :follower
 end
