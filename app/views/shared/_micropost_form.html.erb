@@ -1,0 +1,7 @@
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new micropost..." %> <!-- placeholderをオプションに渡すことで、テキスト入力欄に仮の文字列を表示します。-->
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: [:create]
+  before_action :logged_in_user, only: [:create] # 2行目のbefore_actionで、ApplicationControllerにあるlogged_in_userメソッドを実行し、ログインしていない場合はcreateメソッドは実行しないで/loginにリダイレクトするようにしています。
   
   def create
     @micropost = current_user.microposts.build(micropost_params)
