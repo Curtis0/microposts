@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
     def following?(other_user) # 他のユーザーがfollowing_usersに入っているかチェックしています。
       following_users.include?(other_user)
     end
+    
+    def feed_items
+      Micropost.where(user_id: following_user_ids + [self.id]) # following_user_idsは、Userモデルのhas_many :following_usersの部分で自動的に生成されたメソッドで、フォローしているユーザーのIDを配列で返します
+    end
 end
