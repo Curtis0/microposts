@@ -31,4 +31,7 @@ class User < ActiveRecord::Base
     def feed_items
       Micropost.where(user_id: following_user_ids + [self.id]) # following_user_idsは、Userモデルのhas_many :following_usersの部分で自動的に生成されたメソッドで、フォローしているユーザーのIDを配列で返します
     end
+    
+    paginates_per 5
+    max_paginates_per 5
 end

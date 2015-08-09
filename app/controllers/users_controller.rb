@@ -3,7 +3,7 @@ before_action :set_before, only: [ :show, :edit, :update ]
   
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts
+    @microposts = @user.microposts.page(params[:page]).per(5)
   end
   
   def new
