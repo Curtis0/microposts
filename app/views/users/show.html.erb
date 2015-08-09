@@ -3,12 +3,13 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <h3><%= link_to @user.name, user_path %><br></h3>
+        <%= @user.area %><br>
       </h1>
     </section>
+    <section class="col-md-4 col-md-offset-1"><%= render 'follow_form' if logged_in? %></section>
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
     <%= page_entries_info @microposts %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>

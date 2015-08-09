@@ -2,12 +2,8 @@ class UsersController < ApplicationController
 before_action :set_before, only: [ :show, :edit, :update, :followers, :followees ]
   
   def show
-<<<<<<< HEAD
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page]).per(5)
-=======
-    @microposts = @user.microposts
->>>>>>> followings-followers
   end
   
   def new
