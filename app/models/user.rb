@@ -7,14 +7,15 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
     has_secure_password
     has_many :microposts
+    
     has_many :following_relationships,  class_name:   "Relationship",
                                         foreign_key:  "follower_id",
                                         dependent:    :destroy
     has_many :following_users, through: :following_relationships, source: :followed
-    has_many :followed_relationships,   class_name:   "Relationship",
+    has_many :follower_relationships,   class_name:   "Relationship",
                                         foreign_key:  "followed_id",
                                         dependent:    :destroy
-    has_many :followed_users, through: :followed_relationships, source: :follower
+    has_many :follower_users, through: :follower_relationships, source: :follower
     
     def follow(other_user) # following_relationshipをフォローしているユーザーのuser_idを指定して作成しています。
       following_relationships.create(followed_id: other_user.id)

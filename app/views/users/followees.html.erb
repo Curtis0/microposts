@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-4">
+    
+  </div>
+  <div class="col-md-8">
+    <% @followees.each do |followee| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3><%= followee.name %><br></h3>
+          <%= followee.area %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

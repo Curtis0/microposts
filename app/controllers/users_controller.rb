@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-before_action :set_before, only: [ :show, :edit, :update ]
+before_action :set_before, only: [ :show, :edit, :update, :followers, :followees ]
   
   def show
+<<<<<<< HEAD
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page]).per(5)
+=======
+    @microposts = @user.microposts
+>>>>>>> followings-followers
   end
   
   def new
@@ -34,6 +38,14 @@ before_action :set_before, only: [ :show, :edit, :update ]
   
   def set_before
     @user = User.find(params[:id])
+  end
+  
+  def followers
+    @followers = @user.follower_users # This is the same as @user.follower_users.all . '.all' is ONLY used to grab all elements of a CLASS.
+  end
+  
+  def followees
+    @followees = @user.following_users # By the way this followers_users and followees_users can be found defined in the user.rb model file.  
   end
   
   
